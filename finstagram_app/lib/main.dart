@@ -1,3 +1,6 @@
+import 'package:finstagram_app/pages/home_page.dart';
+import 'package:finstagram_app/pages/login_page.dart';
+import 'package:finstagram_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +19,13 @@ class MyApp extends StatelessWidget {
           //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           //useMaterial3: true,
           ),
-      home: Scaffold(),
+      // home: const Scaffold(),
+      initialRoute: 'home',
+      routes: {
+        'register': (context) => const RegisterPage(),
+        'login': (context) => const LoginPage(),
+        'home': (context) => const HomePage()
+      },
     );
   }
 }
