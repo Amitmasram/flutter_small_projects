@@ -11,7 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<Widget> _tabs = [const BMIPage(), const HistoryPage()];
+  final List<Widget> _tabs = [const BMIPage(), HistoryPage()];
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(

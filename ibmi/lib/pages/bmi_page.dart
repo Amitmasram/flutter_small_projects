@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ibmi/widgets/info_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BMIPage extends StatefulWidget {
   const BMIPage({super.key});
@@ -254,12 +255,26 @@ class _BMIPageState extends State<BMIPage> {
               CupertinoDialogAction(
                 child: Text('Ok'),
                 onPressed: () {
+                  _saveResult(_bmi.toString(), _status!);
                   Navigator.pop(_context);
                 },
               )
             ],
           );
         });
+  }
+
+  void _saveResult(String _bmi, String _status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('bmi_date', DateTime.now().toString());
+    await prefs.setStringList(
+      'bmi_data',
+      <String>[
+        _bmi,
+        _status,
+      ],
+    );
+    print("Bmi Result Saved!");
   }
 }
 
